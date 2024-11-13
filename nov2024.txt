@@ -1,0 +1,165 @@
+    1  ip a
+    2  sudo vim /etc/hosts
+    3  sudo dnf install ansible-core
+    4  history
+    5  sudo hostnamectl --help
+    6  sudo hostnamectl hostname control.example.com
+    7  exit
+    8  history
+    9  ansible --help
+   10  ansible -v
+   11  ansible --version
+   12  history
+   13  ssh ansible1
+   14  ssh ansible2
+   15  ssh control
+   16  history
+   17  ssh localhost
+   18  vim inventory
+   19  ansible -i inventory all -u student -b -k -K -m command -a "useradd ansible"
+   20  ansible -i inventory all -u student -b -k -K -m command -a "id ansible"
+   21  ansible -i inventory all -u student -b -k -K -m shell -a "echo password | passwd --stdin ansible"
+   22  sudo dnf install git -y
+   23  git clone https://github.com/sandervanvugt/ansiblefundamentals
+   24  history
+   25  ansible -i inventory all -u student -b -k -K -m command "rpm -qa | grep python"
+   26  ansible -i inventory all -u student -b -k -K -m command -a "rpm -qa | grep python"
+   27  ansible -i inventory all -u student -b -k -K -m shell -a "rpm -qa | grep python"
+   28  history
+   29  ansible -i inventory all -u ansible -k command -a "whoami"
+   30  ansible -i inventory all -u ansible -k -m command -a "whoami"
+   31  ansible -i inventory all -u ansible -k -m command -a "ls -l /root"
+   32  ansible -i inventory all -m copy -a 'content="ansible ALL=(ALL) NOPASSWD: ALL" dest=/etc/sudoers.d/ansible'
+   33  ansible -i inventory all -u student -k -b -K -m copy -a 'content="ansible ALL=(ALL) NOPASSWD: ALL" dest=/etc/sudoers.d/ansible'
+   34  ansible -i inventory all -u ansible -k -b -K -m command -a "ls -l /root"
+   35  su - ansible
+   36  history
+   37  history | less
+   38  su - ansible
+   39  history > /tmp/nov2024.txt
+USER ANSIBLE HISTORY
+    1  vim inventory
+    2  ssh-keygen
+    3  ssh-copy-id ansible1
+    4  ssh-copy-id ansible2
+    5  ssh-copy-id control
+    6  ansible -i inventory -u ansible -m command -a "whoami"
+    7  ansible -i inventory all -u ansible -m command -a "whoami"
+    8  git clone https://github.com/sandervanvugt/ansiblefundamentals
+    9  cd ansiblefundamentals/
+   10  vim ansible.cfg 
+   11  ansible all -a "whoami"
+   12  ansible localhost -a "whoami"
+   13  cp ../inventory .
+   14  ansible all -a "whoami"
+   15  history
+   16  exit
+   17  history
+   18  cd ansiblefundamentals/
+   19  cat ansible.cfg 
+   20  ansible-doc -l
+   21  ansible-doc copy
+   22  echo hello folks
+   23  echo hello again
+   24  echo hello folks
+   25  ./countdown 8
+   26  echo hello now
+   27  ansible all -m user -a "name=lisa"
+   28  ansible ansible2 -m package -a "name=nmap"
+   29  ansible ansible2 -m dnf -a "name=nmap"
+   30  ansible all -m ping
+   31  ansible all -m user -a "name=lisa state=absent"
+   32  ansible-doc -l
+   33  ansible ansible1,ansible2 -m copy -a "src=/etc/hosts dest=/etc/hosts"
+   34  vim inventory 
+   35  ansible ansible1* -m copy -a "src=/etc/hosts dest=/etc/hosts"
+   36  ansible ansible* -m copy -a "src=/etc/hosts dest=/etc/hosts"
+   37  ansible 'ansible*' -m copy -a "src=/etc/hosts dest=/etc/hosts"
+   38  cat ansible.cfg 
+   39  ansible all -m service -a "name=httpd state=started"
+   40  ansible ansible1 -m command -a "useradd jason"
+   41  ansible ansible1 -m user -a "name=jason"
+   42  ls
+   43  vim install_and_start_httpt.yaml 
+   44  ansible-playbook install_and_start_httpt.yaml 
+   45  ls /etc/hosts /etc/ansible/hosts inventory
+   46  vim install_and_start_httpt.yaml 
+   47  ansible-playbook install_and_start_httpt.yaml 
+   48  vim install_and_start_httpt.yaml 
+   49  ansible-playbook --syntax-check install_and_start_httpt.yaml 
+   50  ansible-playbook install_and_start_httpt.yaml 
+   51  vim install_and_start_httpt.yaml 
+   52  ansible-playbook install_and_start_httpt.yaml 
+   53  vim install_and_start_httpt.yaml 
+   54  ansible-playbook install_and_start_httpt.yaml 
+   55  ansible-playbook install_and_start_httpt.yaml -vvv
+   56  vim enforce-selinux.yml 
+   57  ansible-playbook enforce-selinux.yml 
+   58  ansible-galaxy collection install ansible.posix
+   59  ansible-doc -l
+   60  ansible-playbook enforce-selinux.yml 
+   61  history
+   62  ansible-playbook enforce-selinux-simplified.yml 
+   63  vim enforce-selinux-simplified.yml 
+   64  ansible-playbook enforce-selinux-simplified.yml 
+   65  vim enforce-selinux-simplified.yml 
+   66  ./countdown 12
+   67  ls
+   68  vim multi_play.yaml 
+   69  ansible-playbook multi_play.yaml 
+   70  vim multi_play.yaml 
+   71  ansible-playbook multi_play.yaml 
+   72  vim variables_example.yaml 
+   73  ansible-playbook variables_example.yaml 
+   74  ansible ansible1 -a "hostname"
+   75  ansible ansible1 -a "hostnamectl set-hostname ansible1.example.com"
+   76  ansible-playbook variables_example.yaml 
+   77  ansible ansible1 -m setup | less
+   78  vim gather_facts.yaml 
+   79  ansible-playbook gather_facts.yaml | less
+   80  vim old_facts.yaml 
+   81  ansible-playbook old_facts.yaml 
+   82  vim new_facts.yaml 
+   83  ansible-playbook new_facts.yaml 
+   84  vim myvars.yaml 
+   85  vim vars_file.yaml 
+   86  ansible-playbook vars_file.yaml 
+   87  vim vars_file.yaml 
+   88  ansible-playbook vars_file.yaml 
+   89  vim vars_file.yaml 
+   90  ls
+   91  mkdir host_vars
+   92  vim host_vars/ansible1
+   93  vim host_vars/ansible2
+   94  vim host_vars/ansible1
+   95  vim host_vars/control
+   96  vim makeuser.yml
+   97  ansible-playbook makeuser.yml 
+   98  vim makeuser.yml
+   99  ansible-playbook makeuser.yml 
+  100  vim makeuser.yml
+  101  cat inventory 
+  102  grep item *
+  103  vim loop_packages.yaml 
+  104  ansible-doc yum
+  105  vim loop_packages.yaml 
+  106  ansible-doc service
+  107  vim loop_packages.yaml 
+  108  ansible-playbook loop_packages.yaml 
+  109  vim when_test.yaml 
+  110  ansible-playbook when_test.yaml 
+  111  vim when_register.yaml 
+  112  vim when_complex.yaml 
+  113  ansible-playbook when_complex.yaml 
+  114  vim using_handlers.yaml 
+  115  ansible-playbook using_handlers.yaml 
+  116  vim using_handlers.yaml 
+  117  ansible-playbook using_handlers.yaml 
+  118  ansible all -m file -a "name=/var/www/html/index.html state=absent"
+  119  ansible-playbook using_handlers.yaml 
+  120  exit
+  121  echo USER ANSIBLE HISTORY
+  122  echo USER ANSIBLE HISTORY >> /tmp/nov2024.txt 
+  123  sudo chmod 666 /tmp/nov2024.txt 
+  124  echo USER ANSIBLE HISTORY >> /tmp/nov2024.txt 
+  125  history >> /tmp/nov2024.txt 
