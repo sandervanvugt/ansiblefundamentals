@@ -1,0 +1,148 @@
+    1  sudo dnf install git
+    2  git clone https://github.com/sandervanvugt/ansiblefundamentals
+    3  cd ansiblefundamentals/
+    4  ls
+    5  vim ansible.cfg 
+    6  vim inventory
+    7  ls -l .ssh
+    8  ssh-keygen 
+    9  for i in ansible1 ansible2 control; do ssh-copy-id $i; done
+   10  ansible all -a "whoami"
+   11  exit
+   12  history
+   13  cd ansiblefundamentals/
+   14  ./countdown 12
+   15  ansible-doc -l
+   16  ansible-doc -l | wc -l
+   17  ansible ansible -m command -a "rpm -qa | grep bash"
+   18  ansible ansible1 -m command -a "rpm -qa | grep bash"
+   19  ansible ansible1 -m shell -a "rpm -qa | grep bash"
+   20  ansible all -m ping
+   21  ansible all -m user -a "name=lisa"
+   22  ansible-doc user
+   23  ansible all -m command -a "id lisa"
+   24  ansible all -m user -a "name=lisa state=absent"
+   25  ansible all -m command -a "id lisa"
+   26  ansible all -m copy -a "src=/etc/hosts dest=/etc/hosts"
+   27  ansible all -m package -a "name=nmap state=latest"
+   28  ansible all -m service -a "name=httpd state=started enabled=yes"
+   29  ansible ansible1 -m command -a "useradd jason"
+   30  ansible ansible1 -m user -a "name=jason"
+   31  ls
+   32  vim install_and_start_httpt.yaml 
+   33  ansible-playbook install_and_start_httpt.yaml 
+   34  ssh ansible1
+   35  ssh ansible2
+   36  ansible ansible1 -a "hostnamectl set-hostname ansible1.example.com"
+   37  ssh ansible1
+   38  ansible-playbook install_and_start_httpt.yaml 
+   39  vim install_and_start_httpt.yaml 
+   40  ansible-playbook --syntax-check install_and_start_httpt.yaml 
+   41  vim install_and_start_httpt.yaml 
+   42  ansible-playbook --syntax-check install_and_start_httpt.yaml 
+   43  vim install_and_start_httpt.yaml 
+   44  ansible-playbook --syntax-check install_and_start_httpt.yaml 
+   45  vim install_and_start_httpt.yaml 
+   46  ansible-playbook --syntax-check install_and_start_httpt.yaml 
+   47  vim install_and_start_httpt.yaml 
+   48  ansible-playbook -vvvvv install_and_start_httpt.yaml 
+   49  ansible-playbook -vv install_and_start_httpt.yaml 
+   50  ./countdown 12
+   51  ansible-playbook enforce-selinux.yml 
+   52  vim enforce-selinux.yml 
+   53  ansible-galaxy collection install ansible.posix
+   54  ansible-doc -l
+   55  ansible-doc selinux
+   56  ansible-playbook enforce-selinux.yml 
+   57  ansible --version
+   58  vim enforce-selinux.yml 
+   59  vim enforce-selinux-simplified.yml 
+   60  vim lab4.yaml
+   61  ansible-playbook lab4.yaml 
+   62  vim lab4.yaml
+   63  ansible-doc systemd
+   64  vim lab4.yaml
+   65  ansible-doc -l | grep firewall
+   66  ansible-doc firewalld
+   67  vim lab4.yaml
+   68  ansible-playbook lab4.yaml 
+   69  vim lab4.yaml
+   70  ansible-playbook lab4.yaml 
+   71  vim lab4.yaml
+   72  ansible-playbook lab4.yaml 
+   73  vim lab4.yaml
+   74  ansible-playbook lab4.yaml 
+   75  vim lab4.yaml
+   76  ansible-playbook lab4.yaml 
+   77  vim lab4.yaml
+   78  ansible-playbook lab4.yaml 
+   79  ansible-playbook --help | less
+   80  vim run_and_test_httpd.yaml 
+   81  ansible-playbook run_and_test_httpd.yaml 
+   82  vim run_and_test_httpd.yaml 
+   83  ansible-doc firewalld
+   84  vim run_and_test_httpd.yaml 
+   85  ansible-playbook run_and_test_httpd.yaml 
+   86  ansible ansible -a "ls -l /var/www/html"
+   87  ansible ansible1 -a "ls -l /var/www/html"
+   88  vim run_and_test_httpd.yaml 
+   89  ansible-playbook run_and_test_httpd.yaml 
+   90  vim run_and_test_httpd.yaml 
+   91  ansible-playbook run_and_test_httpd.yaml 
+   92  vim multi_play.yaml 
+   93  vim variables_example.yaml 
+   94  ansible-playbook variables_example.yaml 
+   95  vim variables_example.yaml 
+   96  ansible-playbook variables_example.yaml 
+   97  ansible-playbook variables_example.yaml -e user=anna
+   98  history
+   99  cat lab4.yaml 
+  100  ./countdown 14
+  101  vim gather_facts.yaml 
+  102  ansible-playbook gather_facts.yaml | less
+  103  vim old_facts.yaml 
+  104  ansible-playbook old_facts.yaml 
+  105  vim new_facts.yaml 
+  106  ansible-playbook new_facts.yaml 
+  107  vim myvars.yaml 
+  108  vim vars_file.yaml 
+  109  ansible-playbook vars_file.yaml 
+  110  vim myvars.yaml 
+  111  vim vars_file.yaml 
+  112  ansible-playbook vars_file.yaml 
+  113  mkdir host_vars
+  114  vim host_vars/ansible1
+  115  ansible-playbook vars_file.yaml 
+  116  vim vars_file.yaml 
+  117  ansible-playbook vars_file.yaml 
+  118  ls host_vars/
+  119  vim vars_file.yaml 
+  120  vim register.yaml 
+  121  ansible-playbook register.yaml 
+  122  vim register.yaml 
+  123  ansible-playbook register.yaml 
+  124  vim loop_packages.yaml 
+  125  ansible-doc yum
+  126  ansible-doc service
+  127  vim loop_packages.yaml 
+  128  ansible-playbook loop_packages.yaml 
+  129  vim loop_on_vars.yaml 
+  130  vim vars/users-list 
+  131  vim loop_on_vars.yaml 
+  132  ansible-playbook loop_on_vars.yaml 
+  133  ansible -m setup ansible1 | less
+  134  vim when_test.yaml 
+  135  ansible-playbook when_test.yaml 
+  136  vim when_complex.yaml 
+  137  ansible-playbook when_complex.yaml 
+  138  vim when_complex.yaml 
+  139  ansible-playbook when_complex.yaml 
+  140  vim using_handlers.yaml 
+  141  ansible-playbook using_handlers.yaml 
+  142  vim using_handlers.yaml 
+  143  ansible-playbook using_handlers.yaml 
+  144  ansible all -m file -a "name=/var/www/html/index.html state=absent"
+  145  ansible-playbook using_handlers.yaml 
+  146  ls
+  147  cat README.md 
+  148  history > /tmp/March2025.txt
