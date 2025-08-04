@@ -1,0 +1,148 @@
+    1  sudo ls -l /root
+    2  git clone https://github.com/sandervanvugt/ansiblefundamentals
+    3  cd ansiblefundamentals/
+    4  vim inventory
+    5  vim ansible.cfg 
+    6  ansible all -m command -a "ls -l /root"
+    7  ssh-keygen
+    8  ssh-copy-id control
+    9  ssh-copy-id ansible1
+   10  ssh-copy-id ansible2
+   11  ansible all -m command -a "ls -l /root"
+   12  history
+   13  ./countdown 1
+   14  history
+   15  exit
+   16  ansible-doc -l
+   17  ansible-doc -l | wc -l
+   18  history
+   19  ansible managed -m command -a "ls -l /root"
+   20  cd ansiblefundamentals/
+   21  ansible managed -m command -a "ls -l /root"
+   22  ansible all -m package -a "name=nmap state=latest"
+   23  ansible all -m service -a "name=httpd state=started enabled=yes"
+   24  vim inventory
+   25  ansible ansible1 -m command -a "useradd jason"
+   26  ansible ansible1 -m user -a "name=jason"
+   27  history
+   28  vim myfirstplay.yaml
+   29  ansible-playbook myfirstplay.yaml 
+   30  vim myfirstplay.yaml
+   31  ansible-playbook myfirstplay.yaml 
+   32  vim myfirstplay.yaml
+   33  ansible-playbook myfirstplay.yaml 
+   34  history
+   35  cat myfirstplay.yaml 
+   36  vim install_and_start_httpt.yaml 
+   37  ansible-playbook install_and_start_httpt.yaml 
+   38  curl ansible1
+   39  vim install_and_start_httpt.yaml 
+   40  ansible-playbook --syntax-check install_and_start_httpt.yaml 
+   41  vim install_and_start_httpt.yaml 
+   42  ansible-playbook --syntax-check install_and_start_httpt.yaml 
+   43  vim install_and_start_httpt.yaml 
+   44  ansible-playbook install_and_start_httpt.yaml 
+   45  ansible-playbook -vvvvv install_and_start_httpt.yaml 
+   46  ansible-playbook -vv install_and_start_httpt.yaml 
+   47  vim enforce-selinux.yml 
+   48  vim enforce-selinux-simplified.yml 
+   49  ansible-playbook enforce-selinux-simplified.yml 
+   50  ansible-doc -l
+   51  vim enforce-selinux-simplified.yml 
+   52  ansible localhost -m dnf -a "name=firefox"
+   53  firefox &
+   54  ansible-galaxy collection install ansible.posix
+   55  ansible-galaxy collection list
+   56  ansible-doc -l
+   57  ansible-playbook enforce-selinux-simplified.yml 
+   58  cd ansiblefundamentals/
+   59  ansible-playbook enforce-selinux-simplified.yml 
+   60  ansible --version
+   61  vim enforce-selinux-simplified.yml 
+   62  vim lab4.yaml
+   63  ansible-playbook lab4.yaml 
+   64  vim lab4.yaml
+   65  ansible-doc dnf
+   66  vim lab4.yaml
+   67  ansible-doc service
+   68  vim lab4.yaml
+   69  ansible-doc firewalld
+   70  vim lab4.yaml
+   71  ansible-playbook lab4.yaml 
+   72  vim lab4.yaml
+   73  ansible-playbook lab4.yaml 
+   74  vim run_and_test_httpd.yaml 
+   75  ansible-playbook run_and_test_httpd.yaml 
+   76  vim multi_play.yaml 
+   77  ansible-playbook multi_play.yaml 
+   78  vim multi_play.yaml 
+   79  ansible-playbook multi_play.yaml 
+   80  ansible-playbook playbook_with_errors.yaml 
+   81  vim playbook_with_errors.yaml 
+   82  ansible-playbook playbook_with_errors.yaml 
+   83  vim playbook_with_errors.yaml 
+   84  ansible-playbook playbook_with_errors.yaml 
+   85  vim playbook_with_errors.yaml 
+   86  ansible-playbook playbook_with_errors.yaml 
+   87  history
+   88  ansible ansible1 -m setup | less
+   89  vim variables_example.yaml 
+   90  ansible-playbook variables_example.yaml 
+   91  ansible-playbook variables_example.yaml -e user=anna
+   92  vim gather_facts.yaml 
+   93  ansible-playbook gather_facts.yaml 
+   94  vim old_facts.yaml 
+   95  ansible-playbook old_facts.yaml 
+   96  vim new_facts.yaml 
+   97  ansible-playbook new_facts.yaml 
+   98  vim myvars.yaml 
+   99  vim vars_file.yaml 
+  100  ansible-playbook vars_file.yaml 
+  101  mkdir hosts_vars
+  102  vim hosts_vars/ansible1
+  103  vim hosts_vars/ansible2
+  104  vim variables_example.yaml 
+  105  ansible-playbook variables_example.yaml 
+  106  vim hosts_vars/ansible1
+  107  vim hosts_vars/ansible2
+  108  ansible-playbook variables_example.yaml 
+  109  cd cd hosts_vars/
+  110  cd hosts_vars/
+  111  mv ansible1 ansible1.yaml
+  112  mv ansible2 
+  113  mv ansible1.yaml ansible1
+  114  cd ..
+  115  mv hosts_vars host_vars
+  116  ansible-playbook variables_example.yaml 
+  117  cd host_vars/
+  118  vim ansible1 
+  119  vim ansible2
+  120  cd ..
+  121  ansible-playbook variables_example.yaml 
+  122  vim variables_example.yaml 
+  123  ansible-playbook variables_example.yaml 
+  124  vim loop_packages.yaml 
+  125  ansible-doc yum
+  126  ansible-doc service
+  127  vim loop_packages.yaml 
+  128  ansible-playbook loop_packages.yaml 
+  129  vim loop_on_vars.yaml 
+  130  ls
+  131  vim vars/users-list 
+  132  vim loop_on_vars.yaml 
+  133  ansible-playbook loop_on_vars.yaml 
+  134  vim when_test.yaml 
+  135  ansible-playbook when_test.yaml 
+  136  vim when_complex.yaml 
+  137  ansible-playbook when_complex.yaml 
+  138  vim when_complex.yaml 
+  139  ansible-playbook when_complex.yaml 
+  140  vim when_register.yaml 
+  141  ansible-playbook when_register.yaml 
+  142  vim using_handlers.yaml 
+  143  ansible-playbook using_handlers.yaml 
+  144  vim using_handlers.yaml 
+  145  ansible-playbook using_handlers.yaml 
+  146  ansible all -m file -a "name=/var/www/html/index.html state=absent" 
+  147  ansible-playbook using_handlers.yaml 
+  148  history > /tmp/aug25.txt
